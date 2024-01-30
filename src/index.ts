@@ -21,7 +21,7 @@ joplin.plugins.register({
 
 		await joplin.settings.registerSection('settings.joPomodoro', {
 			label: 'JoPomodoro',
-			iconName: 'fa-light fa-face-grin-wide'
+			iconName: 'fas fa-apple-alt'
 		});
 		await joplin.settings.registerSettings({
 			"pom_duration": {
