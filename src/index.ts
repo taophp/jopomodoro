@@ -1,4 +1,5 @@
 import joplin from 'api';
+import { SettingItemType } from 'api/types';
 
 joplin.plugins.register({
 	onStart: async function() {
@@ -17,5 +18,40 @@ joplin.plugins.register({
 				<button title="Long pause">⏏️</button>
 			</div>
 		`);
+
+		await joplin.settings.registerSection('settings.joPomodoro', {
+			label: 'JoPomodoro',
+			iconName: 'fa-light fa-face-grin-wide'
+		});
+		await joplin.settings.registerSettings({
+			"pom_duration": {
+				label: "How long last a Pomodoro in minutes",
+				value: 52,
+				type: SettingItemType.Int,
+				public: true,
+				section: 'settings.joPomodoro',
+			},
+			"shortpause_duration": {
+				label: "How long last a short pause in minutes",
+				value: 17,
+				type: SettingItemType.Int,
+				public: true,
+				section: 'settings.joPomodoro',
+			},
+			"longpause_duration": {
+				label: "How long last a long pause in minutes",
+				value: 90,
+				type: SettingItemType.Int,
+				public: true,
+				section: 'settings.joPomodoro',
+			},
+			"how_many_pom_before_long": {
+				label: "How many pomodoro before a long pause",
+				value: 4,
+				type: SettingItemType.Int,
+				public: true,
+				section: 'settings.joPomodoro',
+			},
+		})
 	},
 });
